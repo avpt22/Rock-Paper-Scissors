@@ -33,15 +33,15 @@
 
 function computerPlay () {
         const choices = ["rock", "paper", "scissors"];
-        let randomChoice = choices[Math.floor(Math.random() * choices.length)];
+        let computerChoice = Math.floor(Math.random() * choices.length);
         
-        if (randomChoice === 0) {
+        if (computerChoice === 0) {
             return "rock";
         }
-        if (randomChoice === 1) {
+        if (computerChoice === 1) {
             return "paper";
         }
-        if (randomChoice === 2) {
+        if (computerChoice === 2) {
             return "scissors";
         }
 }
