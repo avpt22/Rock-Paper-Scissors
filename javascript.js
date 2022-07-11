@@ -1,36 +1,6 @@
-/* Computer vs player
-
-    Fist to five points win
-
-    If player choose rock and computer choose rock
-        Then tie and no points
-        Play again
-    If player choose scissors and computer choose scissors
-        Then tie and no points
-        Play again
-    If player choose paper and computer choose paper
-        Then tie and no points
-        Play again
-    
-    If player choose rock and computer choose scissors
-        Then player gets one point
-    If player choose paper and computer choose rock
-        Then player gets one point
-    If player choose scissors and computer choose paper
-        Then player gets one point
-
-    If player choose scissors and computer choose rock
-        Then computer gets one point
-    If player choose paper and computer choose scissors
-        Then computer gets one point
-    If player choose rock and computer choose paper
-        Then computer gets one point
-
-    Keep score till computer or player gets five points
-*/
-
-
 const choices = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 function computerPlay () {
         let computerChoice = Math.floor(Math.random() * choices.length);
@@ -46,35 +16,46 @@ function computerPlay () {
 }
 
 
-const computerSelection = computerPlay();
-let playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
 
 function playRound (playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "That's a tie.";
     }
-    if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win! Rock beats scissors.";
+    else if (playerSelection === "rock" && computerSelection === "scissors") {
+        playerScore++;
+        return "You win! Rock beats scissors."; 
     }
-    if (playerSelection === "rock" && computerSelection === "paper") {
+    else if (playerSelection === "rock" && computerSelection === "paper") {
+        computerScore++;
         return "You lose! Paper beats rock.";
     }
-    if (playerSelection === "paper" && computerSelection === "scissors") {
+    else if (playerSelection === "paper" && computerSelection === "scissors") {
+        computerScore++;
         return "You lose! Scissors beats paper.";
     } 
-    if (playerSelection === "paper" && computerSelection === "rock") {
+    else if (playerSelection === "paper" && computerSelection === "rock") {
+        playerScore++;
         return "You win! Paper beats rock.";
     }
-    if (playerSelection === "scissors" && computerSelection === "rock") {
+    else if (playerSelection === "scissors" && computerSelection === "rock") {
+        computerScore++;
         return "You lose! Rock beats scissors.";
     }
-    if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! Scissors beats paper."
+    else if (playerSelection === "scissors" && computerSelection === "paper") {
+        playerScore++;
+        return "You win! Scissors beats paper.";
     }
 }
 
+const playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
+//console.log(computerPlay()); //why u showing different return than playRound????????
 
 
+function game () {
+    for (let i = 0; i < 5; i++) {
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
 
-console.log(computerPlay());
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
