@@ -1,4 +1,4 @@
-const choices = ["rock", "paper", "scissors"];
+const choices = ["Rock", "Paper", "Scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
@@ -14,8 +14,6 @@ function computerPlay () {
             return "scissors";
         }
 }
-
-
 
 function playRound (playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -47,14 +45,20 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
-//console.log(computerPlay()); //why u showing different return than playRound????????
-
-
 function game () {
     for (let i = 0; i < 5; i++) {
         const computerSelection = computerPlay();
+        const playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
         console.log(playRound(playerSelection, computerSelection));
+    }
+    if (playerScore > computerScore) {
+        return "You beat the computer!";
+    }
+    else if (playerScore < computerScore) {
+        return "You lost to the computer!";
+    }
+    else {
+        return "It's a tie."
     }
 }
 
