@@ -1,2 +1,2 @@
 # Rock-Paper-Scissors
-The Odin Project game
+The Odin Project
